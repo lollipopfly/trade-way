@@ -1,9 +1,6 @@
 import * as React from 'react';
 
 class SocialButtons extends React.Component {
-	constructor(props:any) {
-		super(props);
-	}
 	public googleSignIn() {
 		console.log('google');
 	}

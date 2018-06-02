@@ -2,142 +2,138 @@
 @import '~font-awesome/scss/font-awesome.scss';
 @import '~bootstrap/scss/bootstrap.scss';
 
-// Main
+/*Main*/
 body {
-  background: #fafafa;
+	background: #fafafa;
 }
 
 .mb-30 {
-  margin-bottom: 30px;
+	margin-bottom: 30px;
 }
 
 .fast-speed {
-  animation: fa-spin 1.1s infinite linear;
+	animation: fa-spin 1.1s infinite linear;
 }
 
-// Header
+/*Header*/
 .header {
-  border-bottom: 1px solid #e5e5e5;
-  background-color: #fff !important;
+	border-bottom: 1px solid #e5e5e5;
+	background-color: #fff !important;
 }
 
-// Main
+/*Main*/
 .main {
-  padding-top: 50px;
+	padding-top: 50px;
 }
 
-// Header
-.navbar-brand {
-  width: 45px;
-  height: 45px;
-  background-image: url(../images/logo.png);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center;
-}
 
 .header__dropdown {
-  margin-top: 2px;
-  cursor: pointer;
-  font-size: 14px;
-  outline: none;
+	margin-top: 2px;
+	cursor: pointer;
+	font-size: 14px;
+	outline: none;
 }
 .header__dropdown:focus {
-  box-shadow: none;
+	box-shadow: none;
 }
 .dropdown a {
-  font-size: 14px;
+	font-size: 14px;
 }
 .dropdown .dropdown-menu {
-  width: 100%;
+	width: 100%;
 }
 .header__avatar {
-  width: 40px;
-  height: 40px;
-  margin-top: 1px;
+	width: 40px;
+	height: 40px;
+	margin-top: 1px;
 }
 .header__avatar--img {
-  max-width: 40px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
+	max-width: 40px;
+	-webkit-border-radius: 50%;
+	-moz-border-radius: 50%;
+	border-radius: 50%;
 }
 
-// Auth
+/* Auth */
 .auth__title {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .social__buttons {
-  margin-bottom: 20px;
+	margin-bottom: 20px;
 }
 
 .social__buttons__alert {
-  margin-top: 18px;
-  margin-bottom: 0;
+	margin-top: 18px;
+	margin-bottom: 0;
 }
 
 @media(max-width: 991px) {
-  .auth__btn__block {
-    margin-bottom: 10px;
+	.auth__btn__block {
+		margin-bottom: 10px;
 
-    &:last-child {
-      margin-bottom: 0;
-    }
-  }
+		&:last-child {
+			margin-bottom: 0;
+		}
+	}
+}
+
+.auth__small__text {
+	color: var(--gray);
+	font-size: 13px;
 }
 
 .auth__btn {
-  position: relative;
-  border: none;
-  overflow: hidden;
+	position: relative;
+	border: none;
+	overflow: hidden;
 
-  i {
-    position: absolute;
-    padding: 0 10px;
-    background: rgba(0, 0, 0, 0.3);
-    top: 0;
-    left: 0;
-    width: 40px;
-    height: 100%;
-    line-height: 47px;
-  }
+	i {
+		position: absolute;
+		padding: 0 10px;
+		background: rgba(0, 0, 0, 0.3);
+		top: 0;
+		left: 0;
+		width: 40px;
+		height: 100%;
+		line-height: 47px;
+	}
 }
 
 .btn-facebook {
-  background-color: #3b5a98;
+	background-color: #3b5a98;
 
-  &:hover {
-    background-color: darken(#3b5a98, 10%);
-  }
+	&:hover {
+		background-color: darken(#3b5a98, 10%);
+	}
 }
 
 .btn-google {
-  background-color: #dd4b3a;
+	background-color: #dd4b3a;
 
-  &:hover {
-    background-color: darken(#dd4b3a, 10%);
-  }
+	&:hover {
+		background-color: darken(#dd4b3a, 10%);
+	}
 }
 
-// Traders Page
+/*Traders Page*/
 .traders__card {
-  width: 100%;
+	width: 100%;
 }
 .traders__remove__icon {
-  color: $red;
-  cursor: pointer;
-  font-size: 19px;
+	color: $red;
+	cursor: pointer;
+	font-size: 19px;
 }
 .trader__button {
-  cursor: pointer;
+	cursor: pointer;
 }
 
-// Footer
+/*Footer*/
 footer.footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  text-align: center;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	text-align: center;
 }
