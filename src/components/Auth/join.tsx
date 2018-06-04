@@ -1,19 +1,20 @@
-import * as React from 'react';
-import SocialButtons from './socialbuttons';
-import {Link} from 'react-router-dom';
+import * as React from "react";
+import firebase from "../../helpers/firebase/firebase";
+import SocialButtons from "./socialbuttons";
+import { Link } from "react-router-dom";
 
 interface IJoin {
 	user: {
 		email: string;
 		password: string;
 		passwordConfirm: string;
-	},
+	};
 	errorMessage: string;
-	success: boolean,
-};
+	success: boolean;
+}
 
 class Join extends React.Component<{}, IJoin> {
-	constructor(props:any) {
+	constructor(props: any) {
 		super(props);
 
 		this.handleChange = this.handleChange.bind(this);
@@ -21,19 +22,69 @@ class Join extends React.Component<{}, IJoin> {
 
 		this.state = {
 			user: {
-				email: '',
-				password: '',
-				passwordConfirm: '',
+				email: "tima_scorpion@mail.ru",
+				password: "falloutunix1",
+				passwordConfirm: "falloutunix1"
 			},
-			errorMessage: '',
-			success: false,
+			errorMessage: "",
+			success: false
+		};
+	}
+	public handleChange(e: any): void {
+		let value = e.target.value;
+		let name = e.target.name;
+		let user = this.state.user;
+
+		user[name] = value;
+
+		this.setState({
+			user: user
+		});
+	}
+	public submit(e: any): void | boolean {
+		e.preventDefault();
+
+		let self = this;
+		let email = this.state.user.email;
+		let password = this.state.user.password;
+		let passwordConfirm = this.state.user.passwordConfirm;
+
+		if (password !== passwordConfirm) {
+			this.setState({
+				errorMessage: "Passwords don't match"
+			});
+
+			return false;
 		}
+		firebase
+			.auth()
+			.createUserWithEmailAndPassword(email, password)
+			.then((response: any) => {
+				// Send email for verification
+				self.sendEmailVerification(response.user);
+			})
+			.catch((error: any) => {
+				let errorMessage = error.message;
+
+				self.setState({
+					errorMessage: errorMessage
+				});
+			});
 	}
-	public handleChange() {
-		console.log('handleChange');
-	}
-	public submit() {
-		console.log('submit');
+	public sendEmailVerification(user: any): void {
+		let self = this;
+
+		user
+			.sendEmailVerification()
+			.then(() => {
+				self.setState({
+					errorMessage: "",
+					success: true
+				});
+			})
+			.catch((error: any) => {
+				console.log(error);
+			});
 	}
 	public render() {
 		return (
@@ -44,31 +95,61 @@ class Join extends React.Component<{}, IJoin> {
 
 						<SocialButtons />
 
-						<hr/>
+						<hr />
 
 						<form onSubmit={this.submit}>
 							<div className="form-group">
-								<input type="email" required className="form-control" onChange={this.handleChange} name="email" value={this.state.user.email} placeholder="Email Address" />
+								<input
+									type="email"
+									required
+									className="form-control"
+									onChange={this.handleChange}
+									name="email"
+									value={this.state.user.email}
+									placeholder="Email Address"
+								/>
 							</div>
 							<div className="form-group">
-								<input type="password" required className="form-control" onChange={this.handleChange} name="password" value={this.state.user.password} placeholder="Password" />
+								<input
+									type="password"
+									required
+									className="form-control"
+									onChange={this.handleChange}
+									name="password"
+									value={this.state.user.password}
+									placeholder="Password"
+								/>
 							</div>
 							<div className="form-group">
-								<input type="password" required className="form-control" onChange={this.handleChange} name="passwordConfirm" value={this.state.user.passwordConfirm}placeholder="Confirm Password" />
+								<input
+									type="password"
+									required
+									className="form-control"
+									onChange={this.handleChange}
+									name="passwordConfirm"
+									value={this.state.user.passwordConfirm}
+									placeholder="Confirm Password"
+								/>
 							</div>
 
 							<div className="form-group">
-								<button type="submit" className="btn btn-success">Create an account</button>
+								<button type="submit" className="btn btn-success">
+									Create an account
+								</button>
 							</div>
 						</form>
 
-						{
-							this.state.errorMessage ? <div className="alert alert-danger">{this.state.errorMessage}</div> : null
-						}
+						{this.state.errorMessage ? (
+							<div className="alert alert-danger">
+								{this.state.errorMessage}
+							</div>
+						) : null}
 
-						{
-							this.state.success ? <div className="alert alert-success">Registration Successful, please confirm your email address.</div> : null
-						}
+						{this.state.success ? (
+							<div className="alert alert-success">
+								Registration Successful, please confirm your email address.
+							</div>
+						) : null}
 					</div>
 				</div>
 				<div className="text-center">
@@ -76,7 +157,7 @@ class Join extends React.Component<{}, IJoin> {
 					<Link to="/login">Log in</Link>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 

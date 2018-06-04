@@ -2,10 +2,10 @@ import * as React from 'react';
 
 class SocialButtons extends React.Component {
 	public googleSignIn() {
-		console.log('google');
+		// console.log('google');
 	}
 	public facebookSignIn() {
-		console.log('facebook');
+		// console.log('facebook');
 	}
 	public render() {
 		return (

@@ -10,7 +10,7 @@ import Login from './components/Auth/login';
 import Join from './components/Auth/join';
 import NotFound from './components/Notfound/notfound';
 
-class Routers extends React.Component {
+class Routes extends React.Component {
 	public render() {
 		return (
 			<Router>
@@ -21,6 +21,7 @@ class Routers extends React.Component {
 					<main className="container">
 						<div className="row">
 							<Switch>
+								<Route exact path="/" component={Login} />
 								<Route exact path="/login" component={Login} />
 								<Route exact path="/join" component={Join} />
 
