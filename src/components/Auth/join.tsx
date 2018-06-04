@@ -22,9 +22,9 @@ class Join extends React.Component<{}, IJoin> {
 
 		this.state = {
 			user: {
-				email: "tima_scorpion@mail.ru",
-				password: "falloutunix1",
-				passwordConfirm: "falloutunix1"
+				email: "",
+				password: "",
+				passwordConfirm: ""
 			},
 			errorMessage: "",
 			success: false
